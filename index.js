@@ -268,12 +268,28 @@ app.get('/sneaktreatdb', (req, res) => {
 
 app.post('/sneaktreatdb/:ide', (req, res) => {
     const {ide} = req.params;
+    const {title} = req.body;
     const {price} = req.body;
+    const {description} = req.body;
+    const {category} = req.body;
+    const {image} = req.body;
 
     if(!price) {
         res.status(418).send({message: 'we need a price'})
     }
+    if(!title) {
+        res.status(418).send({message: 'we need a title'})
+    }
+    if(!description) {
+        res.status(418).send({message: 'we need a description'})
+    }
+    if(!category) {
+        res.status(418).send({message: 'we need a category'})
+    }
+    if(!image) {
+        res.status(418).send({message: 'we need an image'})
+    }
     res.send({
-        title: `your sneaker with price ${price} and id of ${ide}`,
+        message : `your sneaker with price ${price} and id of ${ide}`,
     })
 });
